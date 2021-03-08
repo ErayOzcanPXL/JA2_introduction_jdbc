@@ -9,8 +9,8 @@
 	<version>1.0-SNAPSHOT</version>
 
 	<properties>
-		<maven.compiler.target>11</maven.compiler.target>
-		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>15</maven.compiler.target>
+		<maven.compiler.source>15</maven.compiler.source>
 	</properties>
 
 	<build>
@@ -20,6 +20,31 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.22.0</version>
 			</plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                  <execution>
+                    <phase>package</phase>
+                    <goals>
+                      <goal>single</goal>
+                    </goals>
+
+                    <configuration>
+                      <archive>
+                        <manifest>
+                          <mainClass>be.pxl.ja2.jdbc.ConnectingToDatabase</mainClass>
+                        </manifest>
+                      </archive>
+
+                      <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                      </descriptorRefs>
+                    </configuration>
+                  </execution>
+                </executions>
+            </plugin>
 		</plugins>
 	</build>
 
